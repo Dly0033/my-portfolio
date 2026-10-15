@@ -45,6 +45,9 @@ export const KEYS = {
   projects: `${PREFIX}projects`,
   posts: `${PREFIX}posts`,
   meta: `${PREFIX}meta`,
+  messages: `${PREFIX}messages`,
+  settings: `${PREFIX}settings`,
+  auth: `${PREFIX}auth`,
 } as const
 
 export function readJson<T>(key: string): T | null {

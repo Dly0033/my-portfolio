@@ -1,3 +1,4 @@
+import { Contact } from '@/features/contact/Contact'
 import { About } from '@/features/hero/About'
 import { Hero } from '@/features/hero/Hero'
 import { Projects } from '@/features/projects/Projects'
@@ -10,6 +11,7 @@ export default function Home() {
       <About />
       <Skills />
       <Projects />
+      <Contact />
     </>
   )
 }

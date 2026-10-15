@@ -1,4 +1,4 @@
-import type { BlogPost, Profile, Project, Skill } from '../types'
+import type { BlogPost, Profile, Project, Settings, Skill } from '../types'
 
 export const seedProfile: Profile = {
   name: '你的名字',
@@ -57,6 +57,12 @@ export const seedProjects: Project[] = [
     techTags: ['React', 'TypeScript'],
     links: { source: 'https://github.com/' },
     featured: false,
+    detail: {
+      background: '需要一个支持拖拽与标签分类的个人任务管理工具。',
+      goals: ['实现看板视图与拖拽排序', '本地持久化任务数据'],
+      responsibilities: ['组件设计与状态管理', '拖拽交互实现'],
+      outcomes: ['零依赖本地运行', '数据离线可用'],
+    },
     order: 2,
     createdAt: '2025-10-01T00:00:00.000Z',
   },
@@ -68,6 +74,12 @@ export const seedProjects: Project[] = [
     techTags: ['Node.js', 'PostgreSQL', 'Markdown'],
     links: { source: 'https://github.com/' },
     featured: false,
+    detail: {
+      background: '需要一个支持 Markdown 写作与自动发布的博客系统。',
+      goals: ['Markdown 解析与代码高亮', '静态页面生成与发布'],
+      responsibilities: ['后端解析服务', '部署流程自动化'],
+      outcomes: ['发布耗时降低 60%', '支持千级文章'],
+    },
     order: 3,
     createdAt: '2025-06-01T00:00:00.000Z',
   },
@@ -97,9 +109,15 @@ export const seedPosts: BlogPost[] = [
   },
 ]
 
+export const seedSettings: Settings = {
+  siteTitle: 'My Portfolio',
+  siteDescription: '个人展示网站',
+}
+
 export const seedData = {
   profile: seedProfile,
   skills: seedSkills,
   projects: seedProjects,
   posts: seedPosts,
+  settings: seedSettings,
 }

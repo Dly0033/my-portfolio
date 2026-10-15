@@ -7,3 +7,4 @@ const source: string = import.meta.env.VITE_DATA_SOURCE ?? 'local'
 export const api: ApiClient = source === 'http' ? httpClient : localClient
 
 export * from './types'
+export * from './auth'

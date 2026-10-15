@@ -1,16 +1,21 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { api } from '@/api'
+import { useAsyncData } from '@/hooks/useAsyncData'
 import { site } from '@/config/site'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const { data: settings } = useAsyncData(() => api.getSettings(), [])
+
+  const title = settings?.siteTitle ?? site.title
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-bg/70 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="text-lg font-semibold text-ink" onClick={() => setOpen(false)}>
-          {site.title}
+          {title}
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">

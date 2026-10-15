@@ -78,12 +78,63 @@ export interface SiteMeta {
   updatedAt: string
 }
 
+/** 站点设置（后台可维护） */
+export interface Settings {
+  siteTitle: string
+  siteDescription: string
+}
+
+/** 联系表单消息 */
+export interface ContactMessage {
+  name: string
+  email: string
+  subject?: string
+  message: string
+}
+
+/** 后台登录凭据 */
+export interface LoginCredentials {
+  username: string
+  password: string
+}
+
+/** 后台登录会话（仅存 token，不明文存密码） */
+export interface AuthSession {
+  token: string
+  username: string
+  expiresAt: string
+}
+
 /** 数据接口契约：local / http 两种实现共用 */
 export interface ApiClient {
+  // ---- 前台读取 ----
   getProfile(): Promise<Profile>
   getSkills(): Promise<Skill[]>
   getProjects(): Promise<Project[]>
   getProject(slug: string): Promise<Project | null>
   getPosts(): Promise<BlogPost[]>
   getPost(slug: string): Promise<BlogPost | null>
+  sendContactMessage(message: ContactMessage): Promise<void>
+  getSettings(): Promise<Settings>
+
+  // ---- 后台鉴权 ----
+  login(credentials: LoginCredentials): Promise<AuthSession>
+  logout(): Promise<void>
+
+  // ---- 后台管理 ----
+  getMessages(): Promise<ContactMessage[]>
+  updateProfile(profile: Profile): Promise<Profile>
+  updateSettings(settings: Settings): Promise<Settings>
+
+  createSkill(skill: Skill): Promise<Skill>
+  updateSkill(id: string, skill: Skill): Promise<Skill>
+  deleteSkill(id: string): Promise<void>
+
+  createProject(project: Project): Promise<Project>
+  updateProject(id: string, project: Project): Promise<Project>
+  deleteProject(id: string): Promise<void>
+
+  createPost(post: BlogPost): Promise<BlogPost>
+  updatePost(id: string, post: BlogPost): Promise<BlogPost>
+  deletePost(id: string): Promise<void>
 }
