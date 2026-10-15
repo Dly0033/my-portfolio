@@ -1,0 +1,12 @@
+:root {
+  /* 设计 token（RGB 通道，配合 Tailwind <alpha-value> 使用） */
+  --color-bg: 11 11 16;               /* #0B0B10 */
+  --color-surface: 30 30 35;          /* #1E1E23 */
+  --color-surface-muted: 35 35 40;    /* #232328 */
+  --color-border: 30 41 59;           /* #1E293B */
+  --color-text-primary: 248 250 252;  /* #F8FAFC */
+  --color-text-secondary: 148 163 184;/* #94A3B8 */
+  --color-accent: 59 130 246;         /* #3B82F6 */
+  --color-accent-2: 56 189 248;       /* #38BDF8 */
+  --color-destructive: 239 68 68;     /* #EF4444 */
+}
